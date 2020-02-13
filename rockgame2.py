@@ -1,15 +1,13 @@
 import random
 import sys
+from gameIntro import *
 
 SELECTIONS_LIST_RPS = ['ROCK', 'PAPER', 'SCISSORS']
 selections_list = SELECTIONS_LIST_RPS
 c_hand=random.choice(selections_list).upper()
 
 def main():
-    print(" **************************")
-    print("    Welcome to the Game")
-    print(" **************************")
-    print()
+    #game_intro() 
     play()
 
 def play_amount():
@@ -20,19 +18,20 @@ def play_amount():
         play_num = input("INVALID: Must pick a odd number. ")
 
 def play():
+    n = play_amount()
+    wins = 0
     human = 0
     computer = 0
-    
-    n = play_amount()
-    wins = 0  
-    
-    while (wins < n):
+    while (wins <= n):
         c_hand=random.choice(selections_list).upper()
+        print()
+        
         p_hand=input("Choose rock, paper or scissors: ").upper()
-        if: 
-            p_hand = input("INVALID- Try again:")
+        
+
+        print()
         if p_hand == c_hand:
-            print("It is a Tie")
+                print("It is a Tie")
         elif p_hand == 'ROCK':
             if c_hand == 'PAPER':
                 print("Paper covers rock, YOU LOST")
@@ -59,10 +58,18 @@ def play():
             elif c_hand == 'ROCK':
                 print("Rock beats Scissors, YOU LOST")
                 computer += 1
-        
-        
         print("The Score>>>")
         print("    HUMAN = {}".format(human))
         print("  COMPTER = {}".format(computer))
 
+    else:
+        print()
+        print("Thanks for playing")
+        if human > computer:
+            print("Congrats. You Won!!")
+            print("Human: {} vs Computer {}".format(human, computer))
+        else: 
+            print("The computer winds again!")
+            print("Computer: {} vs Human {}".format(computer, human))
+              
 main()
