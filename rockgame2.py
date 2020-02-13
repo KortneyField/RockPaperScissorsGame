@@ -2,8 +2,7 @@ import random
 import sys
 from gameIntro import *
 
-SELECTIONS_LIST_RPS = ['ROCK', 'PAPER', 'SCISSORS']
-selections_list = SELECTIONS_LIST_RPS
+selections_list = ['ROCK', 'PAPER', 'SCISSORS']
 c_hand=random.choice(selections_list).upper()
 
 def main():
@@ -17,16 +16,28 @@ def play_amount():
     else:  
         play_num = input("INVALID: Must pick a odd number. ")
 
+def end_game(): 
+    choice = input("Press Exit to quit game, enter to continue").lower()
+    if choice == "quit":
+        exit()
+    else: 
+        pass
+
 def play():
     n = play_amount()
     wins = 0
     human = 0
     computer = 0
-    while (wins <= n):
+    while (wins <= n+1):
+        
         c_hand=random.choice(selections_list).upper()
         print()
-        
-        p_hand=input("Choose rock, paper or scissors: ").upper()
+        p_hand = ""
+        while p_hand not in selections_list:
+            p_hand=input("Choose rock, paper or scissors: ").upper()
+            clear_screen()
+            if p_hand not in selections_list:
+                print("Invalid, try again: ")
         
 
         print()
@@ -61,7 +72,8 @@ def play():
         print("The Score>>>")
         print("    HUMAN = {}".format(human))
         print("  COMPTER = {}".format(computer))
-
+        end_game()
+        
     else:
         print()
         print("Thanks for playing")
@@ -69,7 +81,7 @@ def play():
             print("Congrats. You Won!!")
             print("Human: {} vs Computer {}".format(human, computer))
         else: 
-            print("The computer winds again!")
+            print("The computer wins again!")
             print("Computer: {} vs Human {}".format(computer, human))
               
 main()
