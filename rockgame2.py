@@ -17,7 +17,9 @@ def play_amount():
         play_num = input("INVALID: Must pick a odd number. ")
 
 def end_game(): 
-    choice = input("Press Exit to quit game, enter to continue").lower()
+    print("Type Exit to quit game")
+    print("Press enter to continue")
+    choice = input(":::  ").lower()
     if choice == "quit":
         exit()
     else: 
@@ -28,11 +30,11 @@ def play():
     wins = 0
     human = 0
     computer = 0
-    while (wins <= n+1):
-        
+    while (wins <= n):
         c_hand=random.choice(selections_list).upper()
         print()
         p_hand = ""
+        end_game()
         while p_hand not in selections_list:
             p_hand=input("Choose rock, paper or scissors: ").upper()
             clear_screen()
@@ -72,16 +74,16 @@ def play():
         print("The Score>>>")
         print("    HUMAN = {}".format(human))
         print("  COMPTER = {}".format(computer))
-        end_game()
         
+
     else:
         print()
         print("Thanks for playing")
         if human > computer:
             print("Congrats. You Won!!")
-            print("Human: {} vs Computer {}".format(human, computer))
+            print("Human: {} vs Computer {}".format(human+1, computer))
         else: 
             print("The computer wins again!")
-            print("Computer: {} vs Human {}".format(computer, human))
+            print("Computer: {} vs Human {}".format(computer+1, human))
               
 main()
